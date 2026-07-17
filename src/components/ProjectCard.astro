@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  ref: string;
+  sector: string;
+  year: string;
+  blurb: string;
+  image: string;
+  featured?: boolean;
+}
+const { title, ref, sector, year, blurb, image, featured = false } = Astro.props;
+---
+
+<article class:list={['project-card', featured && 'project-card--featured']}>
+  <img
+    class="project-card__img"
+    src={image}
+    alt=""
+    width="600"
+    height="400"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="project-card__body">
+    <span class="project-card__ref">{ref}</span>
+    <span class="project-card__meta">{sector} &middot; {year}</span>
+    <h3 class="project-card__title">{title}</h3>
+    <p class="project-card__blurb">{blurb}</p>
+  </div>
+</article>

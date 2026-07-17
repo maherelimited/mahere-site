@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// TODO: Replace this placeholder with the real Web3Forms access key.
+// Create a free key at https://web3forms.com against the Mahere inbox
+// (office@mahereprojects.nz — CONFIRM ADDRESS BEFORE GOING LIVE), then paste
+// the UUID below. No backend or server is required; Web3Forms emails the
+// submission straight to that inbox.
+const WEB3FORMS_ACCESS_KEY = 'YOUR-WEB3FORMS-ACCESS-KEY';
+const CONTACT_EMAIL = 'office@mahereprojects.nz';
+---
+
+<BaseLayout
+  title="Contact — Mahere Projects"
+  description="Start a conversation with Mahere Projects, a project management consultancy in Dunedin, New Zealand. We reply within one working day."
+  path="/contact"
+>
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow eyebrow--rule">Contact</p>
+      <h1>Start with a <span class="gold">conversation</span>.</h1>
+      <p class="lead">Tell us about the project. We reply within one working day.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container contact-grid">
+      <form class="form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+        <input type="hidden" name="subject" value="New enquiry from mahereprojects.nz" />
+        <!-- Honeypot field for spam bots; humans leave it empty. -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+
+        <div class="field">
+          <label for="organisation">Organisation</label>
+          <input id="organisation" name="organisation" type="text" autocomplete="organization" />
+        </div>
+
+        <div class="field">
+          <label for="project_type">Project type</label>
+          <select id="project_type" name="project type">
+            <option value="" selected>Select one…</option>
+            <option>Project management</option>
+            <option>Project recovery</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <div>
+          <button class="btn btn-primary" type="submit">Send enquiry &rarr;</button>
+        </div>
+        <p class="fineprint">Mahere will not on-sell or share your contact details.</p>
+      </form>
+
+      <aside class="contact-aside">
+        <p>
+          Prefer email? Write to us directly and we'll pick it up.
+        </p>
+        <dl>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
+
+          <dt>LinkedIn</dt>
+          <dd>
+            <a href="https://www.linkedin.com/company/mahere-limited" rel="noopener" target="_blank">
+              Mahere on LinkedIn
+            </a>
+          </dd>
+
+          <dt>Company</dt>
+          <dd>Mahere Projects Ltd &middot; Dunedin, New Zealand</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

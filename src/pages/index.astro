@@ -1,0 +1,159 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const sectors = [
+  'Commercial property',
+  'Public sector',
+  'Education',
+  'Utilities',
+  'Hospitality',
+  'Healthcare',
+];
+
+const steps = [
+  {
+    n: '1',
+    title: 'Initiate',
+    body: 'Agree what success looks like; appoint specialists and contractors.',
+  },
+  {
+    n: '2',
+    title: 'Plan',
+    body: 'Time, cost, scope, risk, quality, health and safety.',
+  },
+  {
+    n: '3',
+    title: 'Control',
+    body: 'Monitor and report budget, progress, risk and project health.',
+  },
+  {
+    n: '4',
+    title: 'Close',
+    body: 'Stage review, compliance check, lessons learned, knowledge transfer.',
+  },
+];
+---
+
+<BaseLayout
+  title="Mahere Projects — Sharper Project Management, Dunedin NZ"
+  description="Project planning and construction management consultancy in Dunedin, New Zealand. Commercial and public sector delivery, and recovery of troubled projects."
+  path="/"
+>
+  <!-- 1 · Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Mahere /ˈma-heri/ — a plan; to make preparations in advance.</p>
+      <h1>Sharper <span class="gold">project</span> management.</h1>
+      <p class="lead">
+        Mahere plans, manages and delivers construction projects for the
+        commercial and public sectors — and recovers the ones that have lost
+        their way. Based in Dunedin, working New Zealand-wide.
+      </p>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="/contact">Start a project &rarr;</a>
+        <a class="btn btn-ghost" href="#work">See our work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Who we are -->
+  <section class="section-tight">
+    <div class="container prose">
+      <p class="eyebrow eyebrow--rule">Who we are</p>
+      <p>
+        Mahere is a project management consultancy with decades of senior
+        delivery experience in New Zealand and internationally, across
+        commercial construction, healthcare, education, utilities and
+        hospitality. Successful projects hinge on a solid plan and clear
+        agreements on scope, duration, roles and budget. We work closely with
+        clients, building confidence through meticulous planning and transparent
+        communication — and we bring a wide network of construction-sector
+        specialists to a project when it needs them.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 · Sector strip -->
+  <section class="sector-band section-tight">
+    <div class="container">
+      <ul class="sector-list">
+        {sectors.map((s) => <li>{s}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4 · Selected projects -->
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2>Selected projects</h2>
+      </div>
+      <div class="project-grid">
+        {projects.map((p) => (
+          <ProjectCard
+            title={p.data.title}
+            ref={p.data.ref}
+            sector={p.data.sector}
+            year={p.data.year}
+            blurb={p.data.blurb}
+            image={p.data.image}
+            featured={p.data.featured}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · How we work -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <h2>How we work</h2>
+      </div>
+      <div class="steps">
+        {steps.map((s) => (
+          <div class="step">
+            <span class="step__num">{s.n}</span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Recovery hook -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="feature-card">
+        <p class="eyebrow">Project recovery</p>
+        <h2>When a project loses its way</h2>
+        <p>
+          Projects don't always go to plan. When one drifts on time, budget,
+          quality or scope, Mahere brings a structured five-step recovery method
+          to turn it around.
+        </p>
+        <a class="btn btn-ghost" href="/project-recovery">
+          Explore project recovery &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · CTA band -->
+  <section class="cta-band">
+    <div class="container cta-band__inner">
+      <div>
+        <h2>Start with a conversation.</h2>
+        <p>Tell us about the project — we'll reply within one working day.</p>
+      </div>
+      <a class="btn btn-primary" href="/contact">Contact &rarr;</a>
+    </div>
+  </section>
+</BaseLayout>

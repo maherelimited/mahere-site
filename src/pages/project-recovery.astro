@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const steps = [
+  {
+    n: '1',
+    title: 'Assess the facts.',
+    body: 'Identify the key project difficulties.',
+  },
+  {
+    n: '2',
+    title: 'Plan the rescue.',
+    body: 'Address root causes; target the shortest controlled path to reduced completion risk.',
+  },
+  {
+    n: '3',
+    title: 'Execute the plan.',
+    body: 'Experienced project managers and subject-matter experts monitor and control the work against revised completion deliverables approved by the Principal.',
+  },
+  {
+    n: '4',
+    title: 'Manage the recovery.',
+    body: 'Risk analysis and reporting enable proactive correction and confidence the revised programme is being met.',
+  },
+  {
+    n: '5',
+    title: 'Close out.',
+    body: "Lessons learned, business-case re-validation, and a customised improvement plan for your team's next project.",
+  },
+];
+---
+
+<BaseLayout
+  title="Project Recovery — Mahere Projects"
+  description="A structured five-step method to recover troubled construction projects that have drifted on time, budget, quality or scope. Dunedin, New Zealand."
+  path="/project-recovery"
+>
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow eyebrow--rule">Project recovery</p>
+      <h1>Helping you turn a troubled project <span class="gold">around</span>.</h1>
+      <p class="lead">
+        Distressed projects carry a high cost. Most run on lean resources, so
+        client intervention drains business-as-usual staff — raising stress and
+        risking losses through compromised service and quality. Mahere uses a
+        five-step method to recover projects that have lost their way.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="stack">
+        {steps.map((step) => (
+          <div class="numbered-card">
+            <span class="numbered-card__num">{step.n}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-band__inner">
+      <div>
+        <h2>Is your project drifting?</h2>
+        <p>An assessment will tell you exactly where it stands.</p>
+      </div>
+      <a class="btn btn-primary" href="/contact">Contact &rarr;</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const phases = [
+  {
+    n: '1',
+    title: 'Concept & design',
+    items: [
+      'Design brief and scope definition',
+      'Project control groups and stakeholder plans',
+      'Budgets and funding reports',
+      'Consultant procurement',
+      'Constructability reviews',
+      'Value engineering',
+      'Green Star buildings',
+    ],
+  },
+  {
+    n: '2',
+    title: 'Documentation & tendering',
+    items: [
+      'Tender documentation and evaluation',
+      'Contract risk assessment',
+      'Statutory consents',
+      'Contract conditions review',
+    ],
+  },
+  {
+    n: '3',
+    title: 'Construction',
+    items: [
+      'Contract administration',
+      'Health & safety management',
+      'CPM scheduling',
+      'Cost and budget management',
+      'Earned value',
+      'Change order review',
+      'Claims assistance',
+      'QA and document control',
+      'Progress reporting',
+    ],
+  },
+  {
+    n: '4',
+    title: 'Commissioning & closure',
+    items: [
+      'Project start-up and commissioning',
+      'Guarantees, warranties and as-builts',
+      'Code compliance certificates',
+      'Defects management',
+      'Lessons-learned review',
+      'Contract closure',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Project Management — Mahere Projects"
+  description="Construction project management across every phase — concept and design, documentation and tendering, construction, and commissioning and closure — for commercial and public sector clients in New Zealand."
+  path="/project-management"
+>
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow eyebrow--rule">Project management</p>
+      <h1>Delivery from initiation to <span class="gold">closure</span>.</h1>
+      <p class="lead">
+        Mahere works with clients from initiation through execution, monitoring
+        and closure. Services by project phase:
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="stack">
+        {phases.map((phase) => (
+          <div class="numbered-card">
+            <span class="numbered-card__num">{phase.n}</span>
+            <div>
+              <h3>{phase.title}</h3>
+              <ul>
+                {phase.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <p class="note">
+        <strong>Tools.</strong> Contract administration and document control
+        through Procore; collaboration, dashboards and reporting through
+        Smartsheet.
+      </p>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-band__inner">
+      <div>
+        <h2>Have a project to deliver?</h2>
+        <p>Tell us about it — we'll reply within one working day.</p>
+      </div>
+      <a class="btn btn-primary" href="/contact">Start a project &rarr;</a>
+    </div>
+  </section>
+</BaseLayout>

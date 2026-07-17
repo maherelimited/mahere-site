@@ -1,0 +1,56 @@
+---
+// Dark chrome nav. Active link is highlighted in gold via aria-current.
+const { pathname } = Astro.url;
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/project-management', label: 'Project Management' },
+  { href: '/project-recovery', label: 'Project Recovery' },
+  { href: '/contact', label: 'Contact' },
+];
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="nav">
+  <nav class="container nav__inner" aria-label="Primary">
+    <a class="brandmark" href="/" aria-label="Mahere Projects — home">
+      <span class="brandmark__logo" aria-hidden="true">M</span>
+      <span class="brandmark__word">Mahere <span class="muted">Projects</span></span>
+    </a>
+
+    <ul class="nav__links nav__links--desktop">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>
+            {l.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a class="nav__cta" href="/contact">Start a project &rarr;</a>
+      </li>
+    </ul>
+
+    <details class="nav__toggle">
+      <summary aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </summary>
+      <div class="nav__mobile">
+        <ul>
+          {links.map((l) => (
+            <li>
+              <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>
+                {l.label}
+              </a>
+            </li>
+          ))}
+          <li><a class="nav__cta" href="/contact">Start a project &rarr;</a></li>
+        </ul>
+      </div>
+    </details>
+  </nav>
+</header>

@@ -1,0 +1,18 @@
+{
+  "name": "mahere-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marketing website for Mahere Projects Ltd, a project management consultancy in Dunedin, New Zealand.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "@astrojs/sitemap": "^3.6.0"
+  }
+}
