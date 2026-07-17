@@ -23,7 +23,7 @@ const { title, ref, sector, year, blurb, image, featured = false } = Astro.props
   />
   <div class="project-card__body">
     <span class="project-card__ref">{ref}</span>
-    <span class="project-card__meta">{sector} &middot; {year}</span>
+    <span class="project-card__meta">{year ? `${sector} · ${year}` : sector}</span>
     <h3 class="project-card__title">{title}</h3>
     <p class="project-card__blurb">{blurb}</p>
   </div>

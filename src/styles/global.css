@@ -135,8 +135,16 @@ p {
   background: var(--brand);
 }
 
+/* Marker-style highlight for one headline keyword per page: ink text with a
+   translucent gold marker behind it, slightly overhanging the word. */
 .gold {
-  color: var(--brand-deep);
+  color: var(--ink);
+  background-color: rgba(229, 207, 52, 0.5); /* --brand #E5CF34 at ~50% */
+  padding: 0.02em 0.18em;
+  margin: 0 -0.1em;
+  border-radius: 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .lead {
@@ -230,16 +238,9 @@ section {
 }
 
 .brandmark__logo {
-  width: 30px;
+  width: auto;
   height: 30px;
-  border-radius: 6px;
-  background: var(--brand);
-  color: var(--brand-ink);
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0;
+  display: block;
 }
 
 .brandmark__word {
@@ -346,9 +347,6 @@ section {
   max-width: 15ch;
   margin-bottom: 1.5rem;
 }
-.hero .gold {
-  color: var(--brand-deep);
-}
 
 /* --------------------------------------------------------------- who / prose */
 .prose {
@@ -397,8 +395,13 @@ section {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+}
+@media (max-width: 640px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .project-card {
